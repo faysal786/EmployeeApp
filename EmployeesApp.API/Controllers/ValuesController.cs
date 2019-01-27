@@ -28,7 +28,8 @@ namespace EmployeesApp.API.Controllers
             return Ok(values);
             //return new string[] { "value1", "value2" };
         }
-
+        
+        [AllowAnonymous]
         // GET api/values/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
