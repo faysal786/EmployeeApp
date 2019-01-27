@@ -1,11 +1,16 @@
 using System;
-using System.Collections.Generic;
+using System.Text;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using EmployeesApp.API.Data;
 using EmployeesApp.API.Dtos;
+using EmployeesApp.API.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.Extensions.Configuration;
 
 namespace EmployeesApp.API.Controllers
@@ -14,8 +19,7 @@ namespace EmployeesApp.API.Controllers
     [ApiController]
 
     public class AuthController : ControllerBase
-    {
-        
+    {        
         private readonly IAuthRepository _repository;
         private readonly IConfiguration _config;
         public AuthController(IAuthRepository repository, IConfiguration config)
