@@ -15,6 +15,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Net;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using EmployeesApp.API.Helpers;
 
 namespace EmployeesApp.API
 {
@@ -52,11 +56,23 @@ namespace EmployeesApp.API
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage(); // Shows exceptional page in developmet mode
             }
             else
             {
-                //app.UseHsts();
+                //app.UseHsts(); // Defining Global Exception For Application when in production
+                
+                app.UseExceptionHandler( builder => {
+                    builder.Run( async context => {
+
+                        context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                        var error = context.Features.Get<IExceptionHandlerFeature>();
+                        if(error!=null){
+                            context.Response.AddApplicationError(error.Error.Message); // add headers
+                            await context.Response.WriteAsync(error.Error.Message); // Need to apply core headers to the message return
+                        }
+                    });
+                });
             }
 
             //app.UseHttpsRedirection();
