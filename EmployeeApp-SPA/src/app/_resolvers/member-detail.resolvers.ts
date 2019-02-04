@@ -3,23 +3,25 @@ import { User } from '../_models/user';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { AlertifyService } from '../_services/alertify.service';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class MemberDetailResolver implements Resolve<User> {
+
   constructor(
     private userService: UserService,
     private alertify: AlertifyService,
-    private router: Router
-  ) {}
-  resolve(route: ActivatedRouteSnapshot): Observable<User> {
-    return this.userService.getUser(route.params['id']).pipe (
-      catchError (error => {
-        this.alertify.error('Problem retriving data');
-        this.router.navigate(['/members']);
-        return of(null);
-      })
-    );
-  }
+    private router: Router) {}
+
+    resolve(route: ActivatedRouteSnapshot): Observable<User> {
+      return this.userService.getUser(route.params['id']).pipe(
+        catchError (() => {
+          this.alertify.error('Problem retriving params');
+          this.router.navigate(['/members']);
+          return of(null);
+        })
+      );
+
+    }
 }
