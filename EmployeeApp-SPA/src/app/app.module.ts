@@ -26,6 +26,7 @@ import { appRoutes } from './roots';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolvers';
+import { MemberListResolver } from './_resolvers/member-list.resolvers';
 
 
 
@@ -67,7 +68,8 @@ export function tokenGetter() {
       AlertifyService,
       AuthGuard,
       UserService,
-      MemberDetailResolver
+      MemberDetailResolver,
+      MemberListResolver
    ],
    bootstrap: [
       AppComponent
