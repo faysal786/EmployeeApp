@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/_models/user';
-import { AlertifyService } from 'src/app/_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 export class MembersEditComponent implements OnInit {
   user: User;
   constructor(
-    private alertify: AlertifyService,
     private route: ActivatedRoute
   ) {}
 
