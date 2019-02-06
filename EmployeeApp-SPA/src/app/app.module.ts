@@ -18,7 +18,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import {MemberDetailComponent} from './members/member-detail/member-detail.component';
-// import {MembersEditComponent} from './members/members-edit/members-edit.component';
+import {MembersEditComponent} from './members/members-edit/members-edit.component';
 
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -47,8 +47,8 @@ export function tokenGetter() {
       ListsComponent,
       MessagesComponent,
       MemberCardComponent,
-      MemberDetailComponent
-      // MembersEditComponent
+      MemberDetailComponent,
+      MembersEditComponent
    ],
    imports: [
       BrowserModule,
