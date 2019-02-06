@@ -30,10 +30,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolvers';
 import { MemberListResolver } from './_resolvers/member-list.resolvers';
-
-// import { MemberEditResolver } from './_resolvers/member-edit.resolvers';
-
-
+import { MemberEditResolver } from './_resolvers/member-edit.resolvers';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -76,8 +73,8 @@ export function tokenGetter() {
       AuthGuard,
       UserService,
       MemberDetailResolver,
-      MemberListResolver
-      // MemberEditResolver
+      MemberListResolver,
+      MemberEditResolver
    ],
    bootstrap: [
       AppComponent
