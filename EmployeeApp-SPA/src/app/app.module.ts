@@ -31,6 +31,7 @@ import { UserService } from './_services/user.service';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolvers';
 import { MemberListResolver } from './_resolvers/member-list.resolvers';
 import { MemberEditResolver } from './_resolvers/member-edit.resolvers';
+import { PreventUnsavedChanges } from './_guards/prevent.unsafe.changes.guard';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -71,6 +72,7 @@ export function tokenGetter() {
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
+      PreventUnsavedChanges,
       UserService,
       MemberDetailResolver,
       MemberListResolver,
