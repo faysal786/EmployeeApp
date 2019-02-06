@@ -17,6 +17,7 @@ export class MemberEditResolver implements Resolve<User> {
     private authService: AuthService) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<User> {
+      this.alertify.message(this.authService.decodedToken.nameid);
       return this.userService.getUser(this.authService.decodedToken.nameid).pipe(
         catchError (error => {
           this.alertify.error('Problem retriving params');
