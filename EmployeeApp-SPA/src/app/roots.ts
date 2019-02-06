@@ -7,8 +7,8 @@ import { AuthGuard } from './_guards/auth.guard';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolvers';
 import { MemberListResolver } from './_resolvers/member-list.resolvers';
-import { MemberEditResolver } from './_resolvers/member-edit.resolvers';
-import { MembersEditComponent } from './members/members-edit/members-edit.component';
+// import { MemberEditResolver } from './_resolvers/member-edit.resolvers';
+// import { MembersEditComponent } from './members/members-edit/members-edit.component';
 
 export const appRoutes: Routes = [
 
@@ -20,7 +20,7 @@ export const appRoutes: Routes = [
         children: [
             { path: 'members', component: MemberListComponent, resolve: {users: MemberListResolver }},
             { path: 'members/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver }},
-            { path: 'members/edit', component: MembersEditComponent, resolve: {user: MemberEditResolver }},
+            // { path: 'members/edit', component: MembersEditComponent},
             { path: 'messages', component:  MessagesComponent },
             { path: 'lists', component:  ListsComponent },
         ]

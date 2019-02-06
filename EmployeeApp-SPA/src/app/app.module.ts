@@ -18,7 +18,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import {MemberDetailComponent} from './members/member-detail/member-detail.component';
-import {MembersEditComponent} from './members/members-edit/members-edit.component';
+// import {MembersEditComponent} from './members/members-edit/members-edit.component';
 
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -29,7 +29,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolvers';
 import { MemberListResolver } from './_resolvers/member-list.resolvers';
-import { MemberEditResolver } from './_resolvers/member-edit.resolvers';
+// import { MemberEditResolver } from './_resolvers/member-edit.resolvers';
 
 
 
@@ -47,8 +47,8 @@ export function tokenGetter() {
       ListsComponent,
       MessagesComponent,
       MemberCardComponent,
-      MemberDetailComponent,
-      MembersEditComponent
+      MemberDetailComponent
+      // MembersEditComponent
    ],
    imports: [
       BrowserModule,
@@ -74,8 +74,8 @@ export function tokenGetter() {
       AuthGuard,
       UserService,
       MemberDetailResolver,
-      MemberListResolver,
-      MemberEditResolver
+      MemberListResolver
+      // MemberEditResolver
    ],
    bootstrap: [
       AppComponent
