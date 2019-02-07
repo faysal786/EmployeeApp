@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -47,11 +48,11 @@ namespace EmployeesApp.API.Controllers
             return Unauthorized();
 
             var userFromRepo = await _repo.GetUser(id);
-            _mappe.Map(userforupdatedto, userFromRepo);
+            _mapper.Map(userforupdatedto, userFromRepo);
 
             if(await _repo.SaveAll())
             return NoContent();
-            throw new  Exception($"Updating User {id} failed on server");
+            throw new Exception  ($"Updating User {id} failed on server");
         }
 
     }
