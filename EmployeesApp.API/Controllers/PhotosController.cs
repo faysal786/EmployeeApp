@@ -9,6 +9,7 @@ using CloudinaryDotNet.Actions;
 using EmployeesApp.API.Data;
 using EmployeesApp.API.Dtos;
 using EmployeesApp.API.Helpers;
+using EmployeesApp.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -64,7 +65,7 @@ namespace EmployeesApp.API.Controllers
             }
             photosForCreationDto.PublicId = uploadResult.PublicId;
             photosForCreationDto.Url = uploadResult.Uri.ToString();
-            
+            var photo = _mapper.Map<Photo>(photosForCreationDto);
 
 
 
