@@ -29,7 +29,6 @@ namespace EmployeesApp.API
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -37,10 +36,12 @@ namespace EmployeesApp.API
         {
             services.AddDbContext<DataContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-            .AddJsonOptions(opt => {
+            .AddJsonOptions(opt =>
+            {
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
             services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository, AuthRepository>();
@@ -53,7 +54,7 @@ namespace EmployeesApp.API
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:TokenKey").Value)),
                     ValidateIssuer = false,
-                    ValidateAudience =  false
+                    ValidateAudience = false
                 };
             });
         }
@@ -68,13 +69,16 @@ namespace EmployeesApp.API
             else
             {
                 //app.UseHsts(); // Defining Global Exception For Application when in production
-                
-                app.UseExceptionHandler( builder => {
-                    builder.Run( async context => {
 
-                        context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                app.UseExceptionHandler(builder =>
+                {
+                    builder.Run(async context =>
+                    {
+
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                         var error = context.Features.Get<IExceptionHandlerFeature>();
-                        if(error!=null){
+                        if (error != null)
+                        {
                             context.Response.AddApplicationError(error.Error.Message); // add headers
                             await context.Response.WriteAsync(error.Error.Message); // Need to apply core headers to the message return
                         }
