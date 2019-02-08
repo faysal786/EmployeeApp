@@ -42,7 +42,7 @@ namespace EmployeesApp.API.Controllers
 
         }
 
-        [HttpPost]
+       /*  [HttpPost]
         public async Task<IActionResult> AddPhotosForUser(int userId, PhotosForCreationDto photosForCreationDto) {
             
             if(userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
@@ -67,10 +67,12 @@ namespace EmployeesApp.API.Controllers
             photosForCreationDto.Url = uploadResult.Uri.ToString();
             var photo = _mapper.Map<Photo>(photosForCreationDto);
 
+            //if(!userFromRepo.Photos.Any( u => u.is
+
 
 
         }
-
+ */
 
 
 
