@@ -44,9 +44,9 @@ namespace EmployeesApp.API.Controllers
         [HttpGet("{id}", Name ="GetPhoto")]
         public async Task<IActionResult> GetPhoto(int id) {
 
-            var photoFromRepo = _repo.GetPhoto(id);
-            var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);            
-
+            var photoFromRepo = await _repo.GetPhoto(id);
+            var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);  
+            return Ok(photo);
         }
 
         [HttpPost]
@@ -84,7 +84,8 @@ namespace EmployeesApp.API.Controllers
             userFromRepo.Photos.Add(photo);
             if (await _repo.SaveAll())
             {
-                return Ok();
+                var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
+                return CreatedAtRout("GetPhoto",new {id, photo.id}, photoToReturn);
             }
             return BadRequest("Could not add the photo");
         }
