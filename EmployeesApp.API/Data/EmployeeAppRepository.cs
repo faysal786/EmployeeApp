@@ -22,6 +22,12 @@ namespace EmployeesApp.API.Data
             _dataContext.Remove(entity);
         }
 
+        public async Task<Photo> GetPhoto(int id)
+        {            
+            var photo = await _dataContext.Photos.FirstOrDefaultAsync(p => p.Id == id);
+            return photo;
+        }
+
         public async Task<User> GetUser(int id)
         {
             // include mean to add photos as well

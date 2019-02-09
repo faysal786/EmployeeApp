@@ -41,6 +41,15 @@ namespace EmployeesApp.API.Controllers
 
         }
 
+        [HttpGet("{id}", Name ="GetPhoto")]
+        public async Task<IActionResult> GetPhoto(int id) {
+
+            var photoFromRepo = _repo.GetPhoto(id);
+            var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
+            
+
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddPhotosForUser(int userId, PhotosForCreationDto photosForCreationDto)
         {
