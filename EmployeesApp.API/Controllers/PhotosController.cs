@@ -50,7 +50,7 @@ namespace EmployeesApp.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPhotosForUser(int userId, PhotosForCreationDto photosForCreationDto)
+        public async Task<IActionResult> AddPhotosForUser(int userId,[FromForm] PhotosForCreationDto photosForCreationDto)
         {
 
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
