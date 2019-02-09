@@ -1,3 +1,5 @@
+using System;
+
 namespace EmployeesApp.API.Dtos
 {
     public class PhotoForReturnDto
