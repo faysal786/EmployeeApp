@@ -85,7 +85,7 @@ namespace EmployeesApp.API.Controllers
             if (await _repo.SaveAll())
             {
                 var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
-                return CreatedAtRout("GetPhoto",new {id, photo.id}, photoToReturn);
+                return CreatedAtRout("GetPhoto",new {Id, photo.Id}, photoToReturn);
             }
             return BadRequest("Could not add the photo");
         }
