@@ -60,6 +60,7 @@ namespace EmployeesApp.API.Controllers
             var file = photosForCreationDto.File;
             var uploadResult = new ImageUploadResult();
 
+
             if (file.Length > 0)
             {
 
