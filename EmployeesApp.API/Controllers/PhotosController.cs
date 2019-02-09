@@ -75,7 +75,7 @@ namespace EmployeesApp.API.Controllers
 
             }
             photosForCreationDto.PublicId = uploadResult.PublicId;
-            photosForCreationDto.Url = uploadResult.Uri.ToString();
+            //photosForCreationDto.Url = uploadResult.
             var photo = _mapper.Map<Photo>(photosForCreationDto);
 
             if (!userFromRepo.Photos.Any(u => u.IsMain))
