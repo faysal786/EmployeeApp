@@ -25,7 +25,9 @@ namespace EmployeesApp.API.Helpers
                 opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
             }); 
             CreateMap<Photo, PhotosForDetailedDto>();     
-            CreateMap<UserForUpdateDto,User>();      
+            CreateMap<UserForUpdateDto,User>();     
+            CreateMap<Photo,PhotoForReturnDto>();
+            CreateMap<PhotoForCeationDto, Photo>();
         }
     }
 }

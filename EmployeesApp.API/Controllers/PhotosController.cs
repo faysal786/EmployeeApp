@@ -45,8 +45,7 @@ namespace EmployeesApp.API.Controllers
         public async Task<IActionResult> GetPhoto(int id) {
 
             var photoFromRepo = _repo.GetPhoto(id);
-            var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
-            
+            var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);            
 
         }
 
