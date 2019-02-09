@@ -19,7 +19,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import {MemberDetailComponent} from './members/member-detail/member-detail.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
-
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
 
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -32,6 +32,7 @@ import { MemberDetailResolver } from './_resolvers/member-detail.resolvers';
 import { MemberListResolver } from './_resolvers/member-list.resolvers';
 import { MemberEditResolver } from './_resolvers/member-edit.resolvers';
 import { PreventUnsavedChanges } from './_guards/prevent.unsafe.changes.guard';
+
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -48,7 +49,8 @@ export function tokenGetter() {
       MessagesComponent,
       MemberCardComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      PhotoEditorComponent
    ],
    imports: [
       BrowserModule,
